@@ -1,0 +1,23 @@
+{
+  "name": "react_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "first": "0.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-shimmer": "^3.2.0"
+  }
+}
