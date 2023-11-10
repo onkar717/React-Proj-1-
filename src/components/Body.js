@@ -1,90 +1,98 @@
 import React from "react";
 import { restaurantslist } from "./config";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import { RestaurantCart } from "./Resturant";
 import { Shimmer } from "./Shimmer";
+import { ReactDOM } from "react-dom";
+import RestaurantMenu from "./Resuturantmenu";
+import { Link } from "react-router-dom";
+import useOnline from "../../utils/useOnline";
 
 
-  // console.log(restaurantslist);
+function filterData(SearchText, restaurants) {
+  const filterData = restaurants.filter((resutarant) =>
+    resutarant?.info?.name?.toLowerCase()?.includes(SearchText.toLowerCase())
+  );
+  return filterData;
+}
 
-  
-  function filterData  ( SearchText , restaurants) {
-    const filterData = restaurants.filter((resutarant) => 
-    resutarant.info.name.includes(SearchText)
-    )
-    // console.log(filterData);
-    return filterData; 
-  }
-  
-  const Body = () => {
-    const [resutarants , setResturants] = useState(restaurantslist)
-    console.log(setResturants);
-    const [SearchText , setSearchInput] = useState("")
-    // console.log(resutarants);
-    // const [SearchClicked , setSearchClicked] = useState("False")
+const Body = () => {
+  const [Allresturant , setAllresturant] = useState([])
+  const [filteredresutarants, setfilteredResturants] = useState([]);
+  const [SearchText, setSearchInput] = useState("");
 
 
-    useEffect(() => {
-      // console.log("Call When SearchText Changed");
-      getresturants()
-    } , [])
+  useEffect(() => {
+    getresturants();
+  }, []);
 
-    
+  async function getresturants() {
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING7");
+    const json = await data.json();
 
-    async function getresturants () {
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-        const json = await data.json()
-        // console.log(json);
-        // setResturants(json.data.cards[0].card.card)  
+  async function checkjsonData(jsonData) {
+    for(let i = 0; i < jsonData?.data?.cards.length; i++){
+      let checkdata = json?.data.cards[i].card?.card?.gridElements?.infoWithStyle?.restaurants;
+      console.log(checkdata);
+      if (checkdata !== undefined) {
+        return checkdata;
+      }
     }
+  }
 
 
-  //   (resutarants.length == 0) ? ( <Shimmer />
-  //  ) : (
+    const resData = await checkjsonData(json);
+    // console.log(resData, "resData");
+    // console.log(resData);
+    setAllresturant(resData);
+    setfilteredResturants(resData);
 
-    return  (
-      <>
+  }
+
+  const isonline = useOnline()
+  if(!isonline){
+    return <h1>Please Check Your Internet Connection</h1>
+  }
+
+
+  if (!Allresturant) return null;
+
+  // if (filteredresutarants?.length == 0)
+  //   return(<h1>No Resturant found</h1>)
+
+  if(Allresturant?.length === 0) return <Shimmer />
+
+  return (
+      <>  
       <div className="Search-containr">
-            <input
-            type="text" 
-            placeholder="Seacrh" 
-            value={SearchText}
-            onChange={(e) => 
-            setSearchInput(e.target.value)}>    
-             </input >
-             {/* <h1>{SearchText}</h1> */}
-             {/* <h1>{SearchClicked}</h1> */}      
-            {/* <input name="myInput" /> */}
-            <button className="Search-btn" onClick ={() => {
-                  // if (SearchClicked === "true") {
-                  //       setSearchClicked("false")
-                  // }
-                  // else {
-                  //       setSearchClicked("true")
-                  // }
+        <input
+          type="text"
+          placeholder="Seacrh"
+          value={SearchText}
+          onChange={(e) => setSearchInput(e.target.value)}
+        ></input>
+        <button
+          className=""
+          onClick={() => {
+            const data = filterData(SearchText, filteredresutarants);
 
-                  const data = filterData(SearchText , resutarants);
-                  // console.log(SearchText);
-                  // console.log(resutarants);
-                  setResturants(data)
-                  // console.log(data);
-                  // console.log(setResturants(data));
-                  // console.log(setresturant);
-            }}>Search</button>
+            setfilteredResturants(data);
+          }}
+        >
+          Search
+        </button>
       </div>
       <div className="restura-list">
-          {/* <RestaurantCart restaurant = {resutarants[1]} />
-          <RestaurantCart restaurant = {resutarants[2]} />
-          <RestaurantCart restaurant = {resutarants[3]} />  
-          <RestaurantCart restaurant = {resutarants[4]} />
-          <RestaurantCart restaurant = {resutarants[5]} />
-          <RestaurantCart restaurant = {resutarants[6]} />  */}
-          {resutarants.map((resutarant)=> {
-            return <RestaurantCart {...resutarant.info} key = {resutarant.info.id} />
-          }) }
+        {filteredresutarants.map((resutarant) => {
+          return (
+            <Link to={"/resutarant/" + resutarant.info.id} key={resutarant.info.id}>
+              <RestaurantCart {...resutarant.info} />
+            </Link>
+          );
+        })}
       </div>
-      </>
-    )
-  };
+    </>
+  )
+}
 
 export default Body;

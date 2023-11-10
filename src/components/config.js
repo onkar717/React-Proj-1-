@@ -3,7 +3,7 @@ export const IMG_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_l
 export const restaurantslist = [
     {
           type: "restaurant",
-          "info": {
+          "data": {
                 "id": "6239",
                 "name": "Chaitanya Paranthas",
                 "cloudinaryImageId": "xofljpukrkkbftsjospa",
@@ -95,7 +95,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "18808",
                 "name": "Faasos - Wraps & Rolls",
                 "cloudinaryImageId": "af33b81798b11deba338e94b7585d348",
@@ -208,7 +208,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "25486",
                 "name": "MH 12 Pav Bhaji",
                 "cloudinaryImageId": "cgf7qsoqsvfwletamxt4",
@@ -313,7 +313,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "22469",
                 "name": "Rajendra Paav Bhaji",
                 "cloudinaryImageId": "e2o7uwlf5kavnzo8qtat",
@@ -417,7 +417,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "488428",
                 "name": "Homely Meals @69",
                 "cloudinaryImageId": "c2apcplijlp7rtfdi69s",
@@ -504,7 +504,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "550196",
                 "name": "Garvaa Biryani - Narayan Peth",
                 "cloudinaryImageId": "otkb10w6kmrespiebmkc",
@@ -590,7 +590,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "678891",
                 "name": "Upwas Uphargruha",
                 "cloudinaryImageId": "94d6ea27c9bcf6dcf564330c31cf3b1a",
@@ -679,7 +679,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "34715",
                 "name": "Kok Pa Chinese",
                 "cloudinaryImageId": "gvvdbegf1guwzww6rsbh",
@@ -766,7 +766,7 @@ export const restaurantslist = [
     },
     {
       type: "restaurant",
-          "info": {
+          "data": {
                 "id": "506982",
                 "name": "McDonald's",
                 "cloudinaryImageId": "bb7ae131544c7d37e10fc5faf76f09d6",
