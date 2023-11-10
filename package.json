@@ -12,12 +12,18 @@
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^8.4.31",
+    "postcss-loader": "^7.3.3",
+    "tailwindcss": "^3.3.5"
   },
   "dependencies": {
     "first": "0.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-shimmer": "^3.2.0"
+    "react-router-dom": "^6.18.0",
+    "react-shimmer": "^3.2.0",
+    "router-dom": "^2.2.11",
+    "undefined": "^0.1.0"
   }
 }

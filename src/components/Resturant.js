@@ -1,7 +1,7 @@
 import React from "react"
 import { IMG_URL } from "./config"
 
-export  const RestaurantCart = ({name , cuisines , totalRatingsString ,cloudinaryImageId}) => {
+export  const RestaurantCart = ({name , cuisines  ,cloudinaryImageId , totalRatingsString}) => {
     // console.log(props) 
     return (
           <div className="cart">
