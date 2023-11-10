@@ -1,6 +1,3 @@
-/* styles.css */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-/* Your other CSS rules go here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
